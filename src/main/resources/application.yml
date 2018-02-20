@@ -1,0 +1,34 @@
+
+logging:
+  config: classpath:logback.xml
+
+# the options from org.apache.camel.spring.boot.CamelConfigurationProperties can be configured here
+camel:
+  springboot:
+    name: CamelLovesOracle
+
+# lets listen on all ports to ensure we can be invoked from the pod IP
+server:
+  address: 0.0.0.0
+
+management:
+  address: 0.0.0.0
+  port: 8081
+
+# lets use a different management port in case you need to listen to HTTP requests on 8080
+
+
+# disable all management enpoints except health
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+
+dataSource:
+  driverClassName: "oracle.jdbc.driver.OracleDriver"
+  url: "jdbc:oracle:thin:@192.168.122.72:1521:ORCL"
+  username: flex
+  password: Password1!
+  connectionProperties: "maxTotal=1;initialSize=1;minIdle=1"
+  accessToUnderlyingConnectionAllowed: true
+
