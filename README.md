@@ -1,6 +1,9 @@
 # camel-oraevent-example
 
-Just an example of a camel spring boot using the camel-oraevent component
+Just an example of a camel spring boot using the camel-oraevent component.  In order to see what has changed in the database, we
+must go back and query the database based on tableName and ROWID.
+
+![camel-oraevent-example](./sequence.png)
 
 Each insert into the database (happening every 5 seconds), should result in output
 similar to below.

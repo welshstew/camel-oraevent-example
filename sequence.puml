@@ -1,0 +1,20 @@
+@startuml
+
+database oracleDB
+collections camelOraEvent
+collections camelRoute
+
+oracleDB -> oracleDB: rowsChanged()
+oracleDB -> camelOraEvent: DatabaseChangeEvent
+activate camelOraEvent
+camelOraEvent -> camelRoute
+deactivate camelOraEvent
+
+activate camelRoute
+camelRoute -> camelRoute: extract ROWID
+camelRoute -> camelRoute: extract tableName
+camelRoute <-> oracleDB: query actual changes
+camelRoute -> camelRoute: log changes
+deactivate camelOraEvent
+
+@enduml
